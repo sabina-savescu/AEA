@@ -1,0 +1,39 @@
+RAPORT 
+
+Problema: TRAVELLNG SALESMAN WITH A DRONE
+
+Descrierea modelului:
+
+Notatie:
+n = numarul de clienti.
+
+dVisit[i] = perioada de timp in care drona ajunge de la i si inapoi la nodul din care poate fi preluata de camion.
+dVisit_before[i] = tdVisit[i,j] = drona care paraseste camionul la nodul j si pleaca spre nodul i
+dVisit_after[i] = dtVisit[i,j] = drona care pleaca din nodul i spre nodul j pentru a se reintalni cu camionul
+
+Pasi:
+Pas 1: Se fixeaza primul si ultimul nod ca fiind vizitat de catre camion (reprezentand primul client si depoul).
+Pas 2: Se impune constrangerea ca intervalele vizitate de drona si camion sa nu se suprapuna.
+Pas 3: Se testeaza posibilitatea crearii unui interval care poate fi satisfacut de drona sau camion. 
+Pas 4: Se selecteaza intervalul din care a plecat drona (j) ca sa ajunga in i. (dVisit_before[i])
+Pas 5: Se selecteaza intervalul in care drona a plecat din i si ajunge in j. (dVisit_after[i])
+Pas 6: Se impune conditia ca dVisit[i] sa acopere intervalele mentionate la Pasul 4 si 5.
+Pas 7: Se impune conditia ca dVisit_after[i] sa inceapa dupa terminarea lui dVisit_before[i].
+Pas 8: Se impun conditii de sincronizare a dronei cu camionul: 
+	- Drona pleaca din j dupa ce a ajuns camionul in j
+	- Drona ajunge in j inainte (sau in acelasi timp cel mult) sa ajunga camionul in j.
+
+
+Pentru duratele urmatoare specifice dronei si camionului s-au obtinut urmatoarele rezultate:
+Input: 
+Nr clienti = 4;
+truckTime=[3,2,2,2,4];
+droneTime=[1,5,2,2];
+
+Output:
+tVisit = [<1 0 3 3> <0 0 0 0> <1 5 7 2> <0 0 0 0> <1 7 11 4>];
+dVisit = [<0 0 0 0> <1 0 5 5> <0 0 0 0> <1 5 7 2>];
+visit = [<1 0 3 3> <1 0 5 5> <1 5 7 2> <1 5 7 2>];
+Timp de raspuns: 11 secunde 
+
+Timpul pe care l-ar face camionul daca ar servi clientii de la toate nodurile ar fi 9 (13, daca luam in considerare timpul de intoarcere la garaj). In solutia actuala, am minimizat timpul la 7 (11 daca luam in considerare timpul de intoarcere la garaj). 

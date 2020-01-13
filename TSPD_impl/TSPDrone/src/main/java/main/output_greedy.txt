@@ -1,0 +1,7 @@
+StartNode	CombinedNode	DroneNode	TruckPath		DronePath
+0		5		8		[depot, loc5]		[depot, loc8, loc5]
+5		2		3		[loc5, loc2]		[loc5, loc3, loc2]
+2		1		7		[loc2, loc1]		[loc2, loc7, loc1]
+1		4		-1		[loc1, loc4]		[]
+4		0		6		[loc4, depot]		[loc4, loc6, depot]
+Total cost : 273.8564933207237
